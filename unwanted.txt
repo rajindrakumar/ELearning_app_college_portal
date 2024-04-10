@@ -1,0 +1,415 @@
+.....................view_student.html section........................
+
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+	<!-- Page main content START -->
+	<div class="page-content-wrapper border">
+
+		<!-- Title -->
+		<div class="row">
+			<div class="col-12">
+				<h1 class="h3 mb-2 mb-sm-0">Students</h1>
+			</div>
+		</div>
+		{% include 'includes/messages.html' %}	
+		<div class="card bg-transparent">
+
+			<!-- Card header START -->
+			<div class="card-header bg-transparent border-bottom px-0">
+				<!-- Search and select START -->
+				<div class="row g-3 align-items-center justify-content-between">
+
+					<!-- Search bar -->
+					<div class="col-md-8">
+						<form class="rounded position-relative">
+							<input class="form-control bg-transparent" type="search" placeholder="Search" aria-label="Search">
+							<button class="bg-transparent p-2 position-absolute top-50 end-0 translate-middle-y border-0 text-primary-hover text-reset" type="submit">
+								<i class="fas fa-search fs-6 "></i>
+							</button>
+						</form>
+					</div>
+
+					<!-- Tab button -->
+					<div class="col-md-3">
+						<!-- Tabs START -->
+						<ul class="list-inline mb-0 nav nav-pills nav-pill-dark-soft border-0 justify-content-end" id="pills-tab" role="tablist">
+							<!-- Grid tab -->
+							<li class="nav-item">
+								<a href="#nav-preview-tab-1" class="nav-link mb-0 me-2 active" data-bs-toggle="tab">
+									<i class="fas fa-fw fa-th-large"></i>
+								</a>
+							</li>
+							<!-- List tab -->
+							<li class="nav-item">
+								<a href="#nav-html-tab-1" class="nav-link mb-0" data-bs-toggle="tab">
+									<i class="fas fa-fw fa-list-ul"></i>
+								</a>
+							</li>
+						</ul>
+						<!-- Tabs end -->
+					</div>
+				</div>
+				<!-- Search and select END -->
+			</div>
+			<!-- Card header END -->
+
+			<!-- Card body START -->
+			<div class="card-body px-0">
+
+				<!-- Tabs content START -->
+				<div class="tab-content">
+
+					<!-- Tabs content item START -->
+					<div class="tab-pane fade show active"  >
+						{% for i in student %}
+						<div class="row g-4">
+							<td>{{i.id}}</td>
+
+							<!-- Card item START -->
+							<div class="col-md-6 col-xxl-4">
+								<div class="card bg-transparent border h-100"> 
+									<!-- Card header -->
+									<div class="card-header bg-transparent border-bottom d-flex justify-content-between">
+										<div class="d-sm-flex align-items-center">
+											<!-- Avatar -->
+											<div class="avatar avatar-md flex-shrink-0">
+												<img class="avatar-img rounded-circle" src="/{{i.admin.profile_pic}}" alt="User Image">
+											</div>
+											<!-- Info -->
+											<div class="ms-0 ms-sm-2 mt-2 mt-sm-0">
+												<h5 class="mb-0"><a href="#">{{i.admin.first_name}}&nbsp;{{i.admin.last_name}}</a></h5>
+												<span class="text-body small"><i class="fas fa-fw fa-map-marker-alt me-1 mt-1"></i>{{i.address}}</span>
+											</div>
+										</div>
+
+										<!-- Edit dropdown -->
+										<div class="dropdown text-end">
+											<a href="#" class="btn btn-sm btn-light btn-round small mb-0" role="button" id="dropdownShare2" data-bs-toggle="dropdown" aria-expanded="false">
+												<i class="bi bi-three-dots fa-fw"></i>
+											</a>
+											<!-- dropdown button -->
+											<ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare2">
+												<li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square fa-fw me-2"></i>Edit</a></li>
+												<li><a class="dropdown-item" href="#"><i class="bi bi-trash fa-fw me-2"></i>Remove</a></li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="card-body">
+										<!-- Payments -->
+										<div class="d-flex justify-content-between align-items-center mb-3">
+											<div class="d-flex align-items-center">
+												<div class="icon-md bg-success bg-opacity-10 text-success rounded-circle flex-shrink-0"><i class="bi bi-currency-dollar fa-fw"></i></div>
+												<h6 class="mb-0 ms-2 fw-light">Mini project</h6>
+											</div>
+											<span class="mb-0 fw-bold">{{i.mini_project_id.mini_project_name}}</span>
+										</div>
+
+										<!-- Total courses -->
+										<div class="d-flex justify-content-between align-items-center mb-3">
+											<div class="d-flex align-items-center">
+												<div class="icon-md bg-purple bg-opacity-10 text-purple rounded-circle flex-shrink-0"><i class="fas fa-book fa-fw"></i></div>
+												<h6 class="mb-0 ms-2 fw-light">Major Project</h6>
+											</div>
+											<span class="mb-0 fw-bold">{{i.major_project_id.major_project_name}}</span>
+										</div>
+										<!-- Total courses -->
+										<div class="d-flex justify-content-between align-items-center mb-3">
+											<div class="d-flex align-items-center">
+												<div class="icon-md bg-purple bg-opacity-10 text-purple rounded-circle flex-shrink-0"><i class="fas fa-book fa-fw"></i></div>
+												<h6 class="mb-0 ms-2 fw-light">Internship</h6>
+											</div>
+											<span class="mb-0 fw-bold">{{i.internship_id.internship_name}}</span>
+										</div>
+										<!-- Total courses -->
+										<div class="d-flex justify-content-between align-items-center mb-3">
+											<div class="d-flex align-items-center">
+												<div class="icon-md bg-purple bg-opacity-10 text-purple rounded-circle flex-shrink-0"><i class="fas fa-book fa-fw"></i></div>
+												<h6 class="mb-0 ms-2 fw-light">Course</h6>
+											</div>
+											<span class="mb-0 fw-bold">{{i.course_id.name}}</span>
+										</div>
+									</div>
+
+									<!-- Card footer -->
+									<div class="card-footer bg-transparent border-top">
+										<div class="d-sm-flex justify-content-between align-items-center">
+											<!-- Rating star -->
+											<h6 class="mb-2 mb-sm-0">
+												<i class="bi bi-calendar fa-fw text-orange me-2"></i><span class="text-body">Join at:</span> {{i.created_at}}
+											</h6>
+											 
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Card item END -->
+						{% endfor %}
+					</div>
+					<!-- Tabs content item END -->
+
+					<!-- Tabs content item START -->
+					<div class="tab-pane fade" id="nav-html-tab-1">
+						<div class="table-responsive border-0">
+							<table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+								<!-- Table head -->
+								<thead>
+									<tr>
+										<th scope="col" class="border-0 rounded-start">Name</th>
+										<th scope="col" class="border-0">Email</th>
+										<th scope="col" class="border-0">Course</th>
+										<th scope="col" class="border-0">Gender</th>
+										<th scope="col" class="border-0">Address</th>
+										<th scope="col" class="border-0">Session Year</th>
+										<th scope="col" class="border-0">Join date</th>
+										<th scope="col" class="border-0">Mini Project</th>
+										<th scope="col" class="border-0">Major_Project</th>
+										<th scope="col" class="border-0">Internship</th>
+										<th scope="col" class="border-0 rounded-end">Action</th>
+									</tr>
+								</thead>
+
+								<!-- Table body START -->
+								<tbody>
+									{% for i in student %}
+
+
+									<!-- Table row -->
+									<tr>
+										 
+
+										<!-- Table data -->
+										<td>
+											<div class="d-flex align-items-center position-relative">
+												<!-- Image -->
+												<!-- <div class="avatar avatar-md">
+													<img class="avatar-img rounded-circle" src="/{{i.admin.profile_pic}}" alt="User Image">
+												</div> -->
+												<div class="mb-0 ms-3">
+													<!-- Title -->
+													<h6 class="mb-0"><a href="#" class="stretched-link">{{i.admin.first_name}}&nbsp;{{i.admin.last_name}}</a></h6>
+													 
+												</div>
+											</div>
+										</td>
+										<!-- Table data -->
+										<td>{{i.email}}</td>
+										<td>{{i.course_id.name}}</td>
+										<td>{{i.gender}}</td>
+										<td>{{i.address}}</td>
+										<td>{{i.session_year_id}}</td>
+
+										<!-- Table data -->
+										<td>{{i.created_at}}</td>
+
+
+										<!-- Table data -->
+										<td>{{i.mini_project_id.mini_project_name}}</td>
+
+										<!-- Table data -->
+										<td>{{i.major_project_id.major_project_name}}</td>
+
+										<!-- Table data -->
+										<td>{{i.internship_id.internship_name}}</td>
+
+										 
+
+										
+										
+									</tr>
+									{% endfor %}
+								</tbody>
+								<!-- Table body END -->
+							</table>
+						</div>
+					</div>
+					<!-- Tabs content item END -->
+
+				</div>
+				<!-- Tabs content END -->
+			</div>
+			<!-- Card body END -->
+
+			<!-- Card footer START -->
+			<div class="card-footer bg-transparent pt-0 px-0">
+				<!-- Pagination START -->
+				<div class="d-sm-flex justify-content-sm-between align-items-sm-center">
+					<!-- Content -->
+					<p class="mb-0 text-center text-sm-start">Showing 1 to 8 of 20 entries</p>
+					<!-- Pagination -->
+					<nav class="d-flex justify-content-center mb-0" aria-label="navigation">
+						<ul class="pagination pagination-sm pagination-primary-soft mb-0 pb-0 px-0">
+							<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-left"></i></a></li>
+							<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
+							<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
+							<li class="page-item mb-0"><a class="page-link" href="#">3</a></li>
+							<li class="page-item mb-0"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+						</ul>
+					</nav>
+				</div>
+				<!-- Pagination END -->
+			</div>
+			<!-- Card footer END -->
+		</div>
+	</div>
+	<!-- Page main content END -->
+
+{% endblock %}
+
+
+
+..............................end.........................................................
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<script>
+   $(document).ready( function () {
+   $('#table_id').DataTable();
+   } );
+</script>
+<div class="content container-fluid">
+   <div class="page-header">
+      <div class="row align-items-center">
+         <div class="col">
+            <h3 class="page-title">Students</h3>
+            <ul class="breadcrumb">
+               <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+               <li class="breadcrumb-item active">Students</li>
+            </ul>
+         </div>
+         <div class="col-auto text-right float-right ml-auto">
+            <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+            <a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+         </div>
+      </div>
+   </div>
+   {% include 'includes/messages.html' %}
+   <div class="row">
+      <div class="col-sm-12">
+         <div class="card card-table">
+            <div class="card-body">
+               <div class="table-responsive">
+                  <table id="table_id" class="table table-hover table-center mb-0">
+                     <thead>
+                        <tr>
+                           <th>ID</th>
+                           <th>Name</th>
+                           <th>Email</th>
+                           <th>Course</th>
+                           <th>Gender</th>
+                           <th>Address</th>
+                           <th>mini project</th>
+                           <th>major project</th>
+                           <th>Internship</th>
+                           <th>Session Year</th>
+                           <th>Created_at</th>
+                           <th>updated_at</th>
+                           <th class="text-right">Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {% for i in student %}
+                        <tr>
+                           <td>{{i.id}}</td>
+                           <td>
+                              <h6 class="table-avatar">
+                                 <a href="" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="/{{i.admin.profile_pic}}" alt=" "></a>
+                                 <a href="">{{i.admin.first_name}}&nbsp;{{i.admin.last_name}}</a>
+                              </h6>
+                           </td>
+                           <td>{{i.admin.email}}</td>
+                           <td>{{i.course_id.name}}</td>
+                           <td>{{i.gender}}</td>
+                           <td>{{i.address}}</td> 
+                           <td>{{i.mini_project_id.mini_project_name}}</td>
+                           <td>{{i.major_project_id.major_project_name}}</td>
+						   <td>{{i.internship_id.internship_name}}</td>
+                           <td>{{i.session_year_id.session_start}} To {{i.session_year_id.session_end}}</td>
+                           <td>{{i.created_at}}</td>
+                           <td>{{i.updated_at}}</td>
+                           <td class="text-right">
+                              <div class="actions">
+                                 <a href="" class="btn btn-sm bg-success-light mr-2">
+                                 <i class="fas fa-pen"></i>
+                                 </a>
+                                 <a href="" class="btn btn-sm bg-danger-light">
+                                 <i class="fas fa-trash"></i>
+                                 </a>
+                              </div>
+                           </td>
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
+
+.............................................
+
+..............start add miniproject..................
+
+# def ADD_MINI_PROJECT(request):
+
+#     if request.method == "POST":
+#         mini_project_name_ = request.POST.get('mini_project_name_')
+
+#         mini_project = Mini_Project(
+#             mini_project_name = mini_project_name_,
+#         )
+#         mini_project.save()
+#         messages.success(request,'Mini Project Are Successfully Created ')
+
+#         return redirect('add_mini_project')
+
+#     return render(request,'add_mini_project.html')
+
+
+# def VIEW_MINI_PROJECT(request):
+#     mini_project = Mini_Project.objects.all()
+#     context = {
+#         'mini_project':mini_project,
+#     }
+#     return render(request,'view_mini_project.html',context)
+
+
+# def EDIT_MINI_PROJECT(request,id):
+#     mini_project = Mini_Project.objects.get(id = id)
+
+#     context = {
+#         'mini_project':mini_project,
+#     }
+#     return render(request,'edit_mini_project.html',context)
+
+# def UPDATE_MINI_PROJECT(request):
+#     if request.method == 'POST':
+#         mini_project_name = request.POST.get('mini_project_name')
+#         mini_project_id = request.POST.get('mini_project_id')
+
+#         mini_project = Mini_Project.objects.get(id = mini_project_id)
+#         mini_project.mini_project_name = mini_project_name
+#         mini_project.save()
+#         messages.success(request,'Mini Project Are Successfully Updated')
+#         return redirect('view_mini_project')
+
+#     return render(request,'edit_mini_project.html')
+
+
+
+# def DELETE_MINI_PROJECT(request,id):
+#     mini_project = Mini_Project.objects.get(id = id)
+#     mini_project.delete()
+#     messages.success(request,'Mini Project are Successfully Deleted')
+
+#     return redirect('view_mini_project')
+
+
+-------------------end miniproject----------------------------

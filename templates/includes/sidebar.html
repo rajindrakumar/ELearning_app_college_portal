@@ -1,0 +1,132 @@
+{% load static %}
+{% load active_link_tags %}
+<!-- Sidebar START -->
+<nav class="navbar sidebar navbar-expand-xl navbar-dark bg-dark">
+
+    <!-- Navbar brand for xl START -->
+    <div class="d-flex align-items-center">
+        <a class="navbar-brand" href="index.html">
+            <img class="navbar-brand-item" src="/static/assets/images/logo-light.svg" alt="">
+        </a>
+    </div>
+    <!-- Navbar brand for xl END -->
+
+    <div class="offcanvas offcanvas-start flex-row custom-scrollbar h-100" data-bs-backdrop="true" tabindex="-1"
+        id="offcanvasSidebar">
+        <div class="offcanvas-body sidebar-content d-flex flex-column bg-dark">
+
+            <!-- Sidebar menu START -->
+            <ul class="navbar-nav flex-column" id="navbar-sidebar">
+
+                <!-- Menu item 1 -->
+                <li class="{% active_link 'college_home' 'active' %}"><a href="{% url 'college_home' %}" class="nav-link"><i
+                            class="bi bi-house fa-fw me-2"></i>Dashboard</a></li>
+
+                <!-- Title -->
+                <li class="nav-item ms-2 my-2">Pages</li>
+                <li class="submenu {% active_link 'add_student' 'active' %} {% active_link 'view_student' 'active' %}">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#student" role="button"
+                        aria-expanded="false" aria-controls="collapsepage">
+                        <i class="fas fa-user-graduate fa-fw me-2"></i>Student
+                    </a>
+                    <!-- Submenu -->
+                    <ul class="nav collapse flex-column" id="student" data-bs-parent="#navbar-sidebar">
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'add_student' %}">Add
+                                Student</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'view_student' %} ">View Student</a></li>
+                    </ul>
+                </li>
+
+                <!-- menu item 2 -->
+                <li class="{% active_link 'college_workshop' 'active' %}"> <a class="nav-link" href="{% url 'college_workshop' %}"><i
+                            class="fas fa-user-graduate fa-fw me-2"></i>workshops</a></li>
+
+
+
+
+                <li class="submenu {% active_link 'add_course' 'active' %} {% active_link 'view_course' 'active' %}">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#courses" role="button"
+                        aria-expanded="false" aria-controls="collapsepage">
+                        <i class="bi bi-basket fa-fw me-2"></i>Courses
+                    </a>
+                    <!-- Submenu -->
+                    <ul class="nav collapse flex-column" id="courses" data-bs-parent="#navbar-sidebar">
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'add_course' %}">Add
+                                Courses</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'view_course' %}">View Courses</a></li>
+                    </ul>
+                </li>
+
+                <li class="submenu {% active_link 'add_mini_project' 'active' %} {% active_link 'view_mini_project' 'active' %}">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#miniprojects" role="button"
+                        aria-expanded="false" aria-controls="collapsepage">
+                        <i class="bi bi-basket fa-fw me-2"></i>Mini projects
+                    </a>
+                    <!-- Submenu -->
+                    <ul class="nav collapse flex-column" id="miniprojects" data-bs-parent="#navbar-sidebar">
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'add_mini_project' %}">Add Mini
+                                projects</a></li>
+                        <li class="nav-item"> <a class="nav-link"
+                                href="{% url 'view_mini_project' %} ">View Mini Project</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="submenu {% active_link 'add_major_project' 'active' %} {% active_link 'view_major_project' 'active' %}">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#majorprojects" role="button"
+                        aria-expanded="false" aria-controls="collapsepage">
+                        <i class="bi bi-basket fa-fw me-2"></i>Major projects
+                    </a>
+                    <!-- Submenu -->
+                    <ul class="nav collapse flex-column" id="majorprojects" data-bs-parent="#navbar-sidebar">
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'add_major_project' %}">Add Major
+                                projects</a></li>
+                        <li class="nav-item"> <a class="nav-link"
+                                href="{% url 'view_major_project' %} ">View Major Project</a></li>
+                    </ul>
+                </li>
+
+                 
+
+                <li class="submenu {% active_link 'add_internship' 'active' %} {% active_link 'view_internship' 'active' %}">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#Internship" role="button"
+                        aria-expanded="false" aria-controls="collapsepage">
+                        <i class="bi bi-basket fa-fw me-2"></i>Internship
+                    </a>
+                    <!-- Submenu -->
+                    <ul class="nav collapse flex-column" id="Internship" data-bs-parent="#navbar-sidebar">
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'add_internship' %}">Add
+                                Internship</a></li>
+                        <li class="nav-item"> <a class="nav-link"
+                                href="{% url 'view_internship' %}">View Internship </a></li>
+                        < 
+                    </ul>
+                </li>
+
+                <li class="submenu {% active_link 'add_session' 'active' %} {% active_link 'view_session' 'active' %}">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#SessionYear" role="button"
+                        aria-expanded="false" aria-controls="collapsepage">
+                        <i class="bi bi-basket fa-fw me-2"></i>Session Year
+                    </a>
+                    <!-- Submenu -->
+                    <ul class="nav collapse flex-column" id="SessionYear" data-bs-parent="#navbar-sidebar">
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'add_session' %}">Add Session Year</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{% url 'view_session' %} ">View Session Year </a></li>
+                    </ul>
+                </li>
+
+                <li class="{% active_link 'review' 'active' %}"> <a class="nav-link" href="{% url 'review' %}"><i
+                            class="far fa-comment-dots fa-fw me-2"></i>Reviews</a></li>
+
+                <li class="{% active_link 'review' 'logout' %}"> <a class="nav-link" href="{% url 'logout' %}"><i
+                            class="bi bi-power"></i> Logout</a></li>
+
+
+                
+
+                <!-- Sidebar menu end -->
+
+        </div>
+    </div>
+</nav>
+<!-- Sidebar END -->

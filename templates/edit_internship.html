@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="content container-fluid">
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Edit Session</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="subjects.html">Session</a></li>
+                    <li class="breadcrumb-item active">Edit Session</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {% include 'includes/messages.html' %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'update_internship' %}" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="form-title"><span>Internship Information</span></h5>
+                            </div>
+                            <div class="col-12 col-sm-6 mb-3">
+                                <div class="form-group">
+                                    <label>Internship Name</label>
+                                    <div>
+                                        <input type="text" class="form-control" name="internshipname" value="{{internship.internship_name}}" required>
+                                        <input type="text" class="form-control" name="internship_id" value="{{internship.id}}" hidden>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Internship Date Start</label>
+                                    <div>
+                                        <input type="text" class="form-control" name="internship_id" value="{% for i in internship %}{{i.id}}{% endfor %}" required hidden>
+                                        <input type="date" class="form-control" name="internship_start_date" value="{% for i in internship %}{{i.internship_start}}{% endfor %}" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Internship Date End</label>
+                                    <div>
+                                        <input type="date" class="form-control" name="internship_end_date" value="{% for i in internship %}{{i.internship_end}}{% endfor %}" required>
+                                    </div>
+                                </div>
+                            </div>
+                             
+                             
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-primary">Update Session</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Edit profile START -->
+<div class="card bg-transparent border rounded-3">
+    <!-- Card header -->
+    <div class="card-header bg-transparent border-bottom">
+        <h3 class="card-header-title mb-0">Edit Profile</h3>
+    </div>
+    {% include 'includes/messages.html' %}
+    <!-- Card body START -->
+    <div class="card-body">
+        <!-- Form -->
+        <form class="row g-4" method="post" action="{% url 'profile_update' %}" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <!-- Profile picture -->
+            <div class="col-12 justify-content-center align-items-center">
+                <label class="form-label">Profile picture</label>
+                 <input type="file" class="form-control" name="profile_pic">
+            </div>
+
+            <!-- Full name -->
+            <div class="col-12">
+                <label class="form-label">College Name</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="CollegeName" value="{{request.user.CollegeName}}"
+                        placeholder="College Name">
+                </div>
+            </div>
+            <!-- college code -->
+            <div class="col-12">
+                <label class="form-label">College Code</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="CollegeCode" value="{{request.user.CollegeCode}}"
+                        placeholder="College Code">
+                </div>
+            </div>
+
+            <!-- Username -->
+            <div class="col-md-6">
+                <label class="form-label">Admin Administrator</label>
+                <div class="input-group">
+                    <span class="input-group-text">Eduport.com</span>
+                    <input type="text" class="form-control" name="adminAdministrator" value="{{request.user.adminAdministrator}}">
+                </div>
+            </div>
+
+            <!-- Email id -->
+            <div class="col-md-6">
+                <label class="form-label">Email id</label>
+                <input class="form-control" type="email" name="email" value="{{request.user.email}}"
+                    placeholder="Email" readonly>
+            </div>
+            <!-- password -->
+            <div class="col-md-6">
+                <label class="form-label">Password</label>
+                <input class="form-control" name="password" type="password"  
+                    placeholder="Fill Only If You Want To Change Password">
+            </div>
+
+            <!-- Phone number -->
+            <div class="col-md-6">
+                <label class="form-label">Phone number</label>
+                <input type="text" class="form-control" name="phone" value="{{request.user.phone}}"
+                    placeholder="Phone number">
+            </div>
+
+            <!-- Location -->
+            <div class="col-md-6">
+                <label class="form-label">Location</label>
+                <input class="form-control" type="text" name="address" value="{{request.user.address}}">
+            </div>
+
+            <!-- About me -->
+            <div class="col-12">
+                <label class="form-label">About College</label>
+                <textarea class="form-control" name="aboutcollege"
+                    rows="3">{{request.user.aboutcollege}}</textarea>
+            </div>
+            <!-- Save button -->
+            <div class="d-sm-flex justify-content-end">
+                <button type="submit" class="btn btn-primary mb-0">Save changes</button>
+            </div>
+        </form>
+    </div>
+    <!-- Card body END -->
+</div>
+<!-- Edit profile END -->
+
+{% endblock %}
